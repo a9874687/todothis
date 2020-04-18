@@ -23,9 +23,9 @@ function addData(e){
 //updateList更新
 function updateList(item) {
     str = '';
-    var len = item.length;
-    for (var i = 0; len > i; i++) {
-      str += '<li><a href="#" data-index=' + i + ' />刪除</a> <span>' + item[i].content + '</span></li>';
+    var itemLen = item.length;
+    for (var i = 0; i<itemLen; i++) {
+      str += '<li><a href="#" data-num=' + i + ' />刪除</a> <span>' + item[i].content + '</span></li>';
     }
     list.innerHTML = str;
   }
@@ -34,8 +34,8 @@ function updateList(item) {
   function toggleList(e) {
     e.preventDefault();
     if(e.target.nodeName !== 'A'){return};
-    var index = e.target.dataset.index;
-    data.splice(index, 1);
+    var num = e.target.dataset.num;
+    data.splice(num, 1);
     localStorage.setItem('listData', JSON.stringify(data));
     updateList(data);
   }
